@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const Lesson = require('../models/Lesson')
+const Detail = require('../models/Lesson')
 
 
 //GET ALL LESSONS
@@ -32,14 +33,27 @@ router.get('/',async(req,res)=>{
 
 
 
+
+
+
 //SUBMIT LESSON
 router.post('/',(async (req,res)=>{
 
+    // var imgPath = req.file.path;
+    // var image = Lesson.img
+
+    console.log(req.body.details[0])
+
     const lesson = new Lesson({
         title: req.body.title,
-        description: req.body.description
-    });
+        details: [Detail({
+            title: req.body.details.title,
+            desc:req.body.details.desc
+        })]
 
+        
+    });
+console.log(lesson)
 
 try {
     const savedLesson = await lesson.save();
