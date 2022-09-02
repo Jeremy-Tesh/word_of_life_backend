@@ -41,15 +41,20 @@ router.post('/',(async (req,res)=>{
 
     // var imgPath = req.file.path;
     // var image = Lesson.img
+    
+  
 
-    console.log(req.body.details[0])
+ 
 
     const lesson = new Lesson({
         title: req.body.title,
-        details: [Detail({
-            title: req.body.details.title,
-            desc:req.body.details.desc
+        details: [new Detail({
+            title:req.body.details.title,
+            desc:{
+                title:req.body.details.title
+            }
         })]
+       
 
         
     });

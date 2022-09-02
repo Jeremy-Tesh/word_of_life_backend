@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const DetailsSchema = mongoose.Schema({
     title:String,
     desc:{
-        title:String,
+        title:Number,
         name:String,
     }
     // img:{
@@ -15,7 +15,7 @@ const DetailsSchema = mongoose.Schema({
 
 const LessonSchema =  mongoose.Schema({
     title:{
-        type:String,
+        title:String,
         required:true,
     },
     details:[DetailsSchema],
@@ -29,3 +29,4 @@ const LessonSchema =  mongoose.Schema({
 
 module.exports = mongoose.model('Details', DetailsSchema)
 module.exports = mongoose.model('Lessons', LessonSchema)
+
